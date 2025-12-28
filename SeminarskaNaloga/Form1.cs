@@ -9,5 +9,11 @@ namespace SeminarskaNaloga
         {
             InitializeComponent();
         }
+
+        private void btnPrijava_Click(object sender, EventArgs e)
+        {
+            MeniForm mf = new MeniForm();
+            mf.ShowDialog();
+        }
     }
 }

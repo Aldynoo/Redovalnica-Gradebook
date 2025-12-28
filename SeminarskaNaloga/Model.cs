@@ -15,37 +15,40 @@ namespace SeminarskaNaloga
     {
         public int Id { get; set; }
         public string PriIme { get; set; } = string.Empty;
-        public string Naslov { get; set; }
+        public string Naslov { get; set; } = string.Empty;
         public DateTime DatumRojstva { get; set; }
-        public int Telefon { get; set; }
-        public Razred Razred { get; set; } = null;
+        public string Telefon { get; set; } = string.Empty;
+        public int RazredId { get; set; }
+        public Razred Razred { get; set; } 
+        public int OddelekId { get; set; }
         public Oddelek Oddelek { get; set; }
     }
     public class Predmet
     {
         public int Id { get; set; }
         public string UcniPredmet { get; set; } = string.Empty;
-        public int Ocena { get; set; }
+        public int ProfesorId { get; set; }
+        public Profesor Profesor { get; set; }
     }
     public class Oddelek
     {
         public int Id { get; set; }
-        public string Program { get; set; }
-        public string Crka { get; set; }
+        public string Program { get; set; } = string.Empty;
+        public string Crka { get; set; } = string.Empty;
     }
     public class Razred
     {
         public int Id { get; set; }
         public int Letnik { get; set; }
     }
-    public class Izposoja
+    public class Ocena
     {
         public int Id { get; set; }
-        public int KnjigaId { get; set; }
-       // public Knjiga Knjiga { get; set; } = null;
-        public int BralecId { get; set; }
-       // public Bralec Bralec { get; set; }
-        public DateTime DatumIzposoje { get; set; }
-        public DateTime DatumVrnitve { get; set; }
+        public int Vrednost { get; set; }
+        public DateTime Datum { get; set; }
+        public int DijakId { get; set; }
+        public Dijak Dijak { get; set; }
+        public int PredmetId { get; set; }
+        public Predmet Predmet { get; set; }
     }
 }

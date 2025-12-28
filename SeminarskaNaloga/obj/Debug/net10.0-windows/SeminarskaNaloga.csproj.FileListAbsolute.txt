@@ -58,3 +58,6 @@ C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idri
 C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\SeminarskaNaloga.pdb
 C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\SeminarskaNaloga.genruntimeconfig.cache
 C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\ref\SeminarskaNaloga.dll
+C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\SeminarskaNaloga.MeniForm.resources
+C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\SeminarskaNaloga.sourcelink.json
+C:\Users\aldin.DESKTOP-LF6611P\Desktop\ŠOLA\PRO\PRO2_2025_SeminarskaNaloga_Idrizoski\SeminarskaNaloga\obj\Debug\net10.0-windows\SeminarskaNaloga.DodajProfesorja.resources

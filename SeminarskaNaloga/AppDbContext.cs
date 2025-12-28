@@ -13,6 +13,8 @@ namespace SeminarskaNaloga
         public DbSet<Predmet> Predmeti => Set<Predmet>();
         public DbSet<Razred> Razredi => Set<Razred>();
         public DbSet<Oddelek> Oddelki => Set<Oddelek>();
+        public DbSet<Ocena> Ocene => Set<Ocena>();
+        
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
