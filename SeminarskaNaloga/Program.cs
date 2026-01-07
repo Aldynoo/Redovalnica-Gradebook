@@ -18,7 +18,7 @@ namespace SeminarskaNaloga
 
             using (var db = new AppDbContext())
             {
-                db.Database.EnsureDeleted();
+                //db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
 
                 if (!db.Uporabniki.Any())
