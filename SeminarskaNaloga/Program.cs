@@ -38,16 +38,16 @@ namespace SeminarskaNaloga
                         });
                     db.SaveChanges();
                 }
-                if (!db.Uporabniki.Any())
+                if (!db.Razredi.Any())
                 {
                     db.Razredi.AddRange(
                         new Razred { Letnik = 1, Oddelek = "A" },
                         new Razred { Letnik = 1, Oddelek = "B" },
+                        new Razred { Letnik = 2, Oddelek = "A" },
                         new Razred { Letnik = 2, Oddelek = "B" },
-                        new Razred { Letnik = 2, Oddelek = "B" },
+                        new Razred { Letnik = 3, Oddelek = "A" },
                         new Razred { Letnik = 3, Oddelek = "B" },
-                        new Razred { Letnik = 3, Oddelek = "B" },
-                        new Razred { Letnik = 4, Oddelek = "B" },
+                        new Razred { Letnik = 4, Oddelek = "A" },
                         new Razred { Letnik = 4, Oddelek = "B" });
                     db.SaveChanges();
                 }
@@ -60,6 +60,32 @@ namespace SeminarskaNaloga
                     new Predmet { Ime = "Ekonomija" }
                     );
                     db.SaveChanges();
+                }
+                if (!db.Poucevanja.Any())
+                {
+                    var prof = db.Uporabniki.FirstOrDefault(u => u.UporabniskoIme == "prof1");
+                    var allRazredi = db.Razredi.ToList();
+                    var allPredmeti = db.Predmeti.ToList();
+
+                    if (prof != null && allRazredi.Count > 0 && allPredmeti.Count > 0)
+                    {
+                        var mappings = new List<Poucevanje>();
+                        foreach (var razred in allRazredi)
+                        {
+                            foreach (var predmet in allPredmeti)
+                            {
+                                mappings.Add(new Poucevanje
+                                {
+                                    UporabnikId = prof.Id,
+                                    RazredId = razred.Id,
+                                    PredmetId = predmet.Id
+                                });
+                            }
+                        }
+
+                        db.Poucevanja.AddRange(mappings);
+                        db.SaveChanges();
+                    }
                 }
             }
             Application.Run(new LoginForm());

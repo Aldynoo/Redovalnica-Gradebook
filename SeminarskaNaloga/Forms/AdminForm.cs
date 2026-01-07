@@ -49,6 +49,12 @@ namespace SeminarskaNaloga.Forms
                 return;
             }
 
+            if (cbRazredi.SelectedItem == null)
+            {
+                MessageBox.Show("Izberite razred!");
+                return;
+            }
+
             using var db = new AppDbContext();
             var dijak = new Dijak
             {
