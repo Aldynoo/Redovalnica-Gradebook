@@ -28,13 +28,19 @@ namespace SeminarskaNaloga
                         {
                             UporabniskoIme = "admin",
                             Geslo = "admin",
-                            Vloga = "admin"
+                            Vloga = "admin",
+                            Ime = "Admin",
+                            Priimek = "Admin",
+                            Telefon = ""
                         },
                         new Uporabnik
                         {
                             UporabniskoIme = "prof1",
                             Geslo = "prof1234",
-                            Vloga = "profesor"
+                            Vloga = "profesor",
+                            Ime = "test",
+                            Priimek = "test",
+                            Telefon = "000-000-000"
                         });
                     db.SaveChanges();
                 }

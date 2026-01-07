@@ -21,7 +21,6 @@ namespace SeminarskaNaloga.Forms
 
             lblPozdrav.Text = $"Dobrodošel {u.UporabniskoIme}";
 
-            // ensure grid refreshes when subject changes
             cbPredmeti.SelectedIndexChanged += (s, e) => LoadDijaki();
 
             LoadRazredi();
@@ -31,8 +30,6 @@ namespace SeminarskaNaloga.Forms
         private void LoadRazredi()
         {
             using var db = new AppDbContext();
-            // load classes (razredi) — currently showing only those the professor teaches;
-            // if you want all classes, change to db.Razredi.Select(...)
             var razredi = db.Poucevanja
                 .Where(p => p.UporabnikId == profesor.Id)
                 .Select(p => p.Razred)
@@ -50,7 +47,6 @@ namespace SeminarskaNaloga.Forms
         private void LoadPredmeti()
         {
             using var db = new AppDbContext();
-            // load all subjects so professor can choose which subject's grades to view
             var predmeti = db.Predmeti
                 .Select(pm => new { pm.Id, pm.Ime })
                 .ToList();
@@ -78,7 +74,6 @@ namespace SeminarskaNaloga.Forms
 
             using var db = new AppDbContext();
 
-            // determine poucevanje (professor teaching the selected predmet for this razred)
             int? poucevanjeId = null;
             if (predmetId.HasValue)
             {
@@ -87,7 +82,6 @@ namespace SeminarskaNaloga.Forms
                 if (pv != null) poucevanjeId = pv.Id;
             }
 
-            // load students in the selected class
             var students = db.Dijaki
                 .Where(d => d.RazredId == razredId)
                 .Select(d => new { d.Id, d.Ime, d.Priimek })
@@ -95,7 +89,6 @@ namespace SeminarskaNaloga.Forms
 
             string predmetIme = predmetId.HasValue ? db.Predmeti.Where(p => p.Id == predmetId.Value).Select(p => p.Ime).FirstOrDefault() ?? "" : "";
 
-            // load all grades for those students and the poucevanje (if exists) in one query
             Dictionary<int, List<int>> gradesByStudent = new();
             if (poucevanjeId.HasValue && students.Count > 0)
             {
@@ -110,7 +103,6 @@ namespace SeminarskaNaloga.Forms
                     .ToDictionary(g => g.Key, g => g.Select(x => x.Vrednost).ToList());
             }
 
-            // prepare rows: Id, Ime, Priimek, Predmet, Ocene (comma-separated)
             var rows = students.Select(s =>
             {
                 gradesByStudent.TryGetValue(s.Id, out var vals);
@@ -149,7 +141,7 @@ namespace SeminarskaNaloga.Forms
 
             if (poucevanjeId == 0)
             {
-                MessageBox.Show("Ne najdem poučevanja za izbranega dijaka/profesorja/predmet.");
+                MessageBox.Show("Ne najdem poučevanja za ta predmet ali dijaka.");
                 return;
             }
 
@@ -159,7 +151,6 @@ namespace SeminarskaNaloga.Forms
 
             MessageBox.Show("Ocena dodana!");
 
-            // refresh grid so the new grade appears
             LoadDijaki();
         }
 
